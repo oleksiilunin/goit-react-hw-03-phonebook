@@ -1,3 +1,4 @@
+import { BeatLoader } from 'react-spinners';
 import { FiUserMinus } from 'react-icons/fi';
 import {
   List,
@@ -8,25 +9,47 @@ import {
 } from './ContactsList.styled';
 import PropTypes from 'prop-types';
 
-const ContactsList = ({ contacts, onDeleteContact }) => {
-  const sortedList = contacts.sort((firstContact, secondContact) =>
+<BeatLoader
+  color="#36d7b7"
+  cssOverride={{}}
+  margin={2}
+  size={16}
+  speedMultiplier={1}
+/>;
+
+const ContactsList = ({ filteredContacts, onDeleteContact, loadSpinner }) => {
+  const sortedList = filteredContacts.sort((firstContact, secondContact) =>
     firstContact.name
       .toLowerCase()
       .localeCompare(secondContact.name.toLowerCase())
   );
   return (
-    <List>
-      {sortedList.map(({ id, name, number }) => (
-        <Item key={id}>
-          <ItemWrapper>
-            <NameSpan>{name}:</NameSpan> <span>{number}</span>
-          </ItemWrapper>
-          <DeleteButton type="button" onClick={() => onDeleteContact(id)}>
-            <FiUserMinus />
-          </DeleteButton>
-        </Item>
-      ))}
-    </List>
+    <>
+      {loadSpinner ? (
+        <BeatLoader
+          color="#666666"
+          // cssOverride={{}}
+          margin={2}
+          size={12}
+          speedMultiplier={1}
+        />
+      ) : (
+        filteredContacts.length > 0 && (
+          <List>
+            {sortedList.map(({ id, name, number }) => (
+              <Item key={id}>
+                <ItemWrapper>
+                  <NameSpan>{name}:</NameSpan> <span>{number}</span>
+                </ItemWrapper>
+                <DeleteButton type="button" onClick={() => onDeleteContact(id)}>
+                  <FiUserMinus />
+                </DeleteButton>
+              </Item>
+            ))}
+          </List>
+        )
+      )}
+    </>
   );
 };
 

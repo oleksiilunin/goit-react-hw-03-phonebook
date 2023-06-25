@@ -26,6 +26,7 @@ class App extends Component {
   state = {
     contacts: testContacts,
     filter: '',
+    isLoading: false,
   };
 
   handleChangeInput = e => {
@@ -72,7 +73,7 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, isLoading } = this.state;
     const filteredContacts = this.getFilteredContacts();
     return (
       <AppContainer>
@@ -83,7 +84,8 @@ class App extends Component {
         <Section title="Contacts">
           <Filter filterValue={filter} onChangeInput={this.handleChangeInput} />
           <ContactsList
-            contacts={filteredContacts}
+            loadSpinner={isLoading}
+            filteredContacts={filteredContacts}
             onDeleteContact={this.deleteContact}
           />
         </Section>
