@@ -15,6 +15,7 @@ const SectionWrapper = styled.section`
 `;
 
 const SectionTitle = styled.h2`
+  color: #5b5c6c;
   margin-bottom: 12px;
   font-size: 36px;
 `;

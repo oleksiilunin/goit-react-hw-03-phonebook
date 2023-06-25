@@ -31,5 +31,7 @@ export const Input = styled.input`
 
   border: 1px solid #cececf;
 
+  color: #5b5c6c;
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;

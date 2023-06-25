@@ -38,6 +38,8 @@ export const Field = styled(FormikField)`
 
   border-radius: 8px;
   border: 1px solid #cececf;
+
+  color: #5b5c6c;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   font-size: 16px;
