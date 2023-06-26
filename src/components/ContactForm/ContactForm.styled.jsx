@@ -10,7 +10,8 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
 `;
 
 export const Label = styled.label`

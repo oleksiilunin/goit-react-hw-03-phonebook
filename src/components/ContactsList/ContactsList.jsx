@@ -34,14 +34,18 @@ const ContactsList = ({ filteredContacts, onDeleteContact, loadSpinner }) => {
           speedMultiplier={1}
         />
       ) : (
-        filteredContacts.length > 0 && (
+        filteredContacts.length && (
           <List>
             {sortedList.map(({ id, name, number }) => (
               <Item key={id}>
                 <ItemWrapper>
                   <NameSpan>{name}:</NameSpan> <span>{number}</span>
                 </ItemWrapper>
-                <DeleteButton type="button" onClick={() => onDeleteContact(id)}>
+                <DeleteButton
+                  type="button"
+                  onClick={() => onDeleteContact(id)}
+                  aria-label="Delete contact"
+                >
                   <FiUserMinus />
                 </DeleteButton>
               </Item>

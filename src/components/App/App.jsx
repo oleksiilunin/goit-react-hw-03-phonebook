@@ -7,7 +7,7 @@ import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import { ContactsList } from 'components/ContactsList';
 import { GlobalStyles } from 'components/GlobalStyles';
-import testContacts from '../../data/contacts.json';
+// import dataContacts from '../../data/contacts.json';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -24,10 +24,31 @@ const notifyOptions = {
 
 class App extends Component {
   state = {
-    contacts: testContacts,
+    contacts: [],
     filter: '',
     isLoading: false,
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parseContacts = JSON.parse(contacts);
+
+    if (parseContacts) {
+      this.setState({ contacts: parseContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+  toggleLoading() {
+    this.setState(({ isLoading }) => ({
+      isLoading: !isLoading,
+    }));
+  }
 
   handleChangeInput = e => {
     const { name, value } = e.currentTarget;
