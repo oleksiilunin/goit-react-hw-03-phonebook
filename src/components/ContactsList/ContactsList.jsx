@@ -34,7 +34,7 @@ const ContactsList = ({ filteredContacts, onDeleteContact, loadSpinner }) => {
           speedMultiplier={1}
         />
       ) : (
-        filteredContacts.length && (
+        !!filteredContacts.length && (
           <List>
             {sortedList.map(({ id, name, number }) => (
               <Item key={id}>
