@@ -38,7 +38,7 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
@@ -115,22 +115,6 @@ class App extends Component {
         <ToastContainer />
       </AppContainer>
     );
-
-    /* <h1>{title}</h1>
-      <section>
-        <form action=""></form>
-      </section>
-      <section>
-         <h2></h2>
-         <ul></ul>
-      </section>  */
-
-    // <Phonebook>
-    //   <Form>
-    //   </Form>
-    //   <Contacts>
-    //   </Contacts>
-    // </Phonebook>
   }
 }
 
